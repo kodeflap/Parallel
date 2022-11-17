@@ -29,8 +29,8 @@ fun CircularProgressBar(
     initialValue: Int,
     minValue: Int = 0,
     maxValue: Int = 100,
-    primaryColor: Color,
-    secondaryColor: Color,
+    primaryColor: int,
+    secondaryColor: int,
     onPositionChange: (Int) -> Unit
 ) {
     var center by remember {
