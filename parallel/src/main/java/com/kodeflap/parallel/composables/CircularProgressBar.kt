@@ -2,10 +2,9 @@ package com.kodeflap.parallel.composables
 
 import android.graphics.Paint
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -14,12 +13,10 @@ import androidx.compose.ui.graphics.*
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import androidx.compose.ui.graphics.drawscope.rotate
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import kotlin.math.PI
-import kotlin.math.cos
-import kotlin.math.sin
+import kotlin.math.*
 
 
 @Composable
@@ -29,21 +26,68 @@ fun CircularProgressBar(
     initialValue: Int,
     minValue: Int = 0,
     maxValue: Int = 100,
-    primaryColor: Int,
-    secondaryColor: Int,
+    primaryColor: Color,
+    secondaryColor: Color,
     onPositionChange: (Int) -> Unit
 ) {
     var center by remember {
         mutableStateOf(Offset.Zero)
     }
-    val position by remember {
+    var position by remember {
+        mutableStateOf(initialValue)
+    }
+    var anglePosition by remember {
+        mutableStateOf(0f)
+    }
+    var angleStartPosition by remember {
+        mutableStateOf(0f)
+    }
+    var centerValue by remember {
         mutableStateOf(initialValue)
     }
 
     Box(modifier) {
+        centerValue = initialValue
+        position = initialValue
         Canvas(
             modifier = Modifier
                 .fillMaxSize()
+                .pointerInput(true) {
+                    detectDragGestures(
+                        onDragStart = { offset ->
+                            angleStartPosition = -atan2(
+                                x = center.y - offset.y,
+                                y = center.x - offset.x
+                            ) * (180f / PI).toFloat()
+                            angleStartPosition = (angleStartPosition + 180f).mod(360f)
+                        },
+                        onDragEnd = {
+                            centerValue = position
+                            onPositionChange(position)
+                        }
+                    ) { change, _ ->
+                        var touchAngle = -atan2(
+                            x = center.y - change.position.y,
+                            y = center.x - change.position.x
+                        ) * (180f / PI).toFloat()
+                        touchAngle = (touchAngle + 180f).mod(360f)
+                        anglePosition = touchAngle - centerValue * 360f / maxValue
+
+                        if (angleStartPosition in
+                            (centerValue.toFloat() * 360 / maxValue - (360 / maxValue * 5))
+                            ..
+                            (centerValue.toFloat() * 360 / maxValue + (360 / maxValue * 5))
+                        ) {
+                            val dragFrom100 = (position == maxValue &&
+                                    (centerValue + (anglePosition / (360f / maxValue.toFloat()))).roundToInt() in (minValue..maxValue - 5))
+                            val dragFrom0 = (position == minValue &&
+                                    (centerValue + (anglePosition / (360f / maxValue.toFloat()))).roundToInt() in (minValue + 5..maxValue))
+                            if (!dragFrom0 && !dragFrom100) {
+                                position = (centerValue + (anglePosition / (360f / maxValue.toFloat()))).roundToInt()
+                            }
+                        }
+                    }
+                }
         ) {
             val width = size.width
             val height = size.height
@@ -54,7 +98,7 @@ fun CircularProgressBar(
                 brush = Brush.radialGradient(
                     listOf(
                         primaryColor.copy(0.4f),
-                        secondaryColor.copy(0.2f)
+                        secondaryColor.copy(0.20f)
                     )
                 ),
                 radius = radius,
@@ -113,41 +157,25 @@ fun CircularProgressBar(
                         color = color,
                         start = start,
                         end = end,
-                        strokeWidth = 1.dp.toPx()
+                        strokeWidth = 2.dp.toPx()
                     )
                 }
             }
-        drawContext.canvas.nativeCanvas.apply {
-            drawIntoCanvas {
-                drawText(
-                    "$position %",
-                    center.x,
-                    center.y + 45.dp.toPx() / 3f,
-                    Paint().apply {
-                        textSize = 38.sp.toPx()
-                        textAlign = Paint.Align.CENTER
-                        color = primaryColor.toArgb()
-                        isFakeBoldText = true
-                    }
-                )
+            drawContext.canvas.nativeCanvas.apply {
+                drawIntoCanvas {
+                    drawText(
+                        "$position %",
+                        center.x,
+                        center.y + 45.dp.toPx() / 3f,
+                        Paint().apply {
+                            textSize = 38.sp.toPx()
+                            textAlign = Paint.Align.CENTER
+                            color = primaryColor.toArgb()
+                            isFakeBoldText = true
+                        }
+                    )
+                }
             }
-          }
         }
     }
-}
-@Preview(showBackground = true)
-@Composable
-fun Preview() {
-    CircularProgressBar(
-        modifier = Modifier
-            .size(250.dp)
-            .background(Color.DarkGray),
-        radius = 230f ,
-        initialValue = 50 ,
-        primaryColor = Color.White,
-        secondaryColor = Color.Blue,
-        onPositionChange = {
-
-        }
-    )
 }
