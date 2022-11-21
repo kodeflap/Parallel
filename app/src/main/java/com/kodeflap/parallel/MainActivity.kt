@@ -16,7 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.kodeflap.parallel.composables.CircularProgressBar
-import com.kodeflap.parallel.ui.theme.ParallelTheme
+import com.kodeflap.parallel.ui.theme.*
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,31 +25,20 @@ class MainActivity : ComponentActivity() {
             ParallelTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    Greeting("Android")
+                    CircularProgressBar(
+                        modifier = Modifier
+                            .size(250.dp)
+                            .background(Color.Black),
+                        radius = 250f ,
+                        initialValue = 10,
+                        primaryColor = PurpleGrey80,
+                        secondaryColor = Purple,
+                        onPositionChange = {
+
+                        }
+                    )
                 }
             }
         }
     }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    CircularProgressBar(
-        modifier = Modifier
-            .size(250.dp)
-            .background(Color.LightGray),
-        radius = 250f ,
-        initialValue = 10,
-        primaryColor = R.color.black,
-        secondaryColor = R.color.holo_blue_bright,
-        onPositionChange = {
-
-        }
-    )
 }
