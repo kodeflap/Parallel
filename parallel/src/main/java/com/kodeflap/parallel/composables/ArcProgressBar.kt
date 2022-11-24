@@ -13,8 +13,6 @@ fun ArcProgressBar(
     backgroundIndicatorColor:Int,
     backgroundStrokeWidth: Float = 100f,
     fontSize: TextUnit,
-
 ) {
-
 
 }
