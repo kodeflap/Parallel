@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.kodeflap.parallel.composables.GradientProgressBar
+import com.kodeflap.parallel.composables.LinearProgressBar
 import com.kodeflap.parallel.ui.theme.Ash
 import com.kodeflap.parallel.ui.theme.ParallelTheme
 
@@ -63,15 +64,19 @@ class MainActivity : ComponentActivity() {
 //
 //                        }
 //                    )
-                    
-                    GradientProgressBar(
-                        size = 250.dp,
-                        shadowColor = Ash,
-                        foregroundIndicator = Color.Green,
-                        indicatorThickness = 5.dp,
-                        text = 60f ,
-                        animationDuration = 1000
-                    )
+
+
+//
+//                    GradientProgressBar(
+//                        size = 250.dp,
+//                        shadowColor = Ash,
+//                        foregroundIndicator = Color.Green,
+//                        indicatorThickness = 5.dp,
+//                        text = 60f ,
+//                        animationDuration = 1000
+//                    )
+
+                    LinearProgressBar()
                 }
             }
         }
