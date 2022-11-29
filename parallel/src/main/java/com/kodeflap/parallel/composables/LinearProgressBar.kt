@@ -11,11 +11,18 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun LinearProgressBar() {
+fun LinearProgressBar(
+    backgroundColor: Color,
+    progress: Float,
+    roundedCornerShape: Dp,
+    textColor: Color
+
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -24,12 +31,12 @@ fun LinearProgressBar() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        var progress: Int = 60
+
         Box(
             modifier = Modifier
-                .clip(RoundedCornerShape(20.dp))
+                .clip(RoundedCornerShape(roundedCornerShape))
                 .height(30.dp)
-                .background(Color.Green)
+                .background(backgroundColor)
                 .width(300.dp)
         ) {
             Box(
@@ -47,9 +54,7 @@ fun LinearProgressBar() {
             )
             Text(
                 text = "$progress %",
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color.White
+                color = textColor
             )
         }
     }
