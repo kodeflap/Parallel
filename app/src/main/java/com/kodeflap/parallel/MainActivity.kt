@@ -76,7 +76,12 @@ class MainActivity : ComponentActivity() {
 //                        animationDuration = 1000
 //                    )
 
-                    LinearProgressBar()
+                    LinearProgressBar(
+                        backgroundColor = Color.Blue,
+                        progress = 60f,
+                        roundedCornerShape = 20.dp ,
+                        textColor = Color.White
+                    )
                 }
             }
         }
