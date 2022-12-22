@@ -19,6 +19,20 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
+/**
+ * Basic circular progress bar
+ *
+ * @param modifier
+ * @param size
+ * @param value
+ * @param thickness
+ * @param animationDuration
+ * @param animationDelay
+ * @param foregroundColor
+ * @param backgroundColor
+ * @param extraForegroundSpace
+ */
+
 @Composable
 fun BasicCircularProgressBar(
     modifier: Modifier = Modifier,

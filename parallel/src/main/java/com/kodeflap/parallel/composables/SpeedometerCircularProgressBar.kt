@@ -18,6 +18,19 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlin.math.*
 
+/**
+ * Stacked circular progress bar
+ *
+ * @param modifier
+ * @param radius
+ * @param initialValue
+ * @param minValue
+ * @param maxValue
+ * @param primaryColor
+ * @param secondaryColor
+ * @param onPositionChange
+ * @receiver
+ */
 
 @Composable
 fun StackedCircularProgressBar(

@@ -24,6 +24,16 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
+/**
+ * Gradient progress bar
+ *
+ * @param size
+ * @param shadowColor
+ * @param foregroundIndicator
+ * @param indicatorThickness
+ * @param text
+ * @param animationDuration
+ */
 @Composable
 fun GradientProgressBar(
     size: Dp,
