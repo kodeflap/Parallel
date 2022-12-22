@@ -15,6 +15,15 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+/**
+ * Linear progress bar
+ *
+ * @param backgroundColor
+ * @param progress
+ * @param roundedCornerShape
+ * @param textColor
+ */
+
 @Composable
 fun LinearProgressBar(
     backgroundColor: Color,

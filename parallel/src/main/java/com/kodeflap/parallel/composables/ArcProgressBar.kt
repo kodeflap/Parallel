@@ -15,6 +15,14 @@ import androidx.compose.ui.unit.dp
 import java.lang.Math.cos
 import kotlin.math.sin
 
+/**
+ * Arc progress bar
+ *
+ * @param ProgressSize
+ * @param backgroundIndicatorColor
+ * @param progressPercentage
+ */
+
 @Composable
 fun ArcProgressBar(
     ProgressSize: Dp = 100.dp,
