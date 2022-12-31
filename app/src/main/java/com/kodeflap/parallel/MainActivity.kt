@@ -7,11 +7,16 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.size
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import com.kodeflap.parallel.composables.ArcProgressBar
+import com.kodeflap.parallel.composables.CircularProgressBar
 import com.kodeflap.parallel.ui.theme.ParallelTheme
+import com.kodeflap.parallel.ui.theme.Purple
+import com.kodeflap.parallel.ui.theme.PurpleGrey80
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,18 +31,18 @@ class MainActivity : ComponentActivity() {
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-//                    CircularProgressBar(
-//                        modifier = Modifier
-//                            .size(250.dp)
-//                            .background(Color.Black),
-//                        radius = 250f ,
-//                        initialValue = 10,
-//                        primaryColor = PurpleGrey80,
-//                        secondaryColor = Purple,
-//                        onPositionChange = {
-//
-//                        }
-//                    )
+                    CircularProgressBar(
+                        modifier = Modifier
+                            .size(250.dp)
+                            .background(Color.Black),
+                        radius = 250f ,
+                        initialValue = 10,
+                        primaryColor = PurpleGrey80,
+                        secondaryColor = Purple,
+                        onPositionChange = {
+
+                        }
+                    )
 //
 //                    BasicCircularProgressBar(
 //                        modifier = Modifier,
@@ -72,16 +77,7 @@ class MainActivity : ComponentActivity() {
 //                        animationDuration = 1000
 //                    )
 //
-//                    LinearProgressBar(
-//                        backgroundColor = Color.Blue,
-//                        progress = 60f,
-//                        roundedCornerShape = 20.dp ,
-//                        textColor = Color.White
-//                    )
-                    ArcProgressBar(
-                        backgroundIndicatorColor = Color.Blue,
-                        progressPercentage = 10f
-                    )
+
                 }
             }
         }
