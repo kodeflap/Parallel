@@ -1,6 +1,6 @@
 # Parallel
 
-A android UI libarires for variety of progress bars
+A customizable progress bars
 
 <p align = "center">
       <img src = "https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github" height = 25/>
@@ -13,11 +13,6 @@ A android UI libarires for variety of progress bars
       <a href= "https://gitHub.com/kodeflap/Algo_Guide/issues/ ">
       <img src = "https://img.shields.io/github/issues/kodeFlap/Parallel.svg" height = 25/></a>
 </p>
-
-# Project Status
-
-🚧🚧 Project is: In progress. check out the progress
-
 
 ## Tech stack
 
