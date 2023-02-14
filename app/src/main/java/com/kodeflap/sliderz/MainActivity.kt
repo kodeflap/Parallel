@@ -78,9 +78,6 @@ class MainActivity : ComponentActivity() {
 //    )
     LinearProgressBar(
       value = 50f,
-      animationColor = listOf(PurpleGrey40, PurpleGrey80),
-      borderWidth = 30f,
-      borderRadius = 20f ,
     )
   }
 }

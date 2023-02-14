@@ -15,18 +15,23 @@
  */
 package com.kodeflap.sliderz
 
-import androidx.compose.foundation.background
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
 import com.kodeflap.sliderz.stripe.StripeStyle
 
@@ -34,30 +39,45 @@ import com.kodeflap.sliderz.stripe.StripeStyle
 public fun LinearProgressBar(
   modifier: Modifier = Modifier,
   value: Float,
-  animationColor: List<Color>,
-  borderWidth: Float,
-  borderColor: Color = Color.Cyan,
-  borderRadius: Float,
-  shape: Shape = RoundedCornerShape(16.dp)
+  animationDuration: Int = 1000,
+  animationDelay: Int = 0,
+  backgroundColor: Color = Color.Cyan,
+  minValue: Int = 0,
+  maxValue: Int = 100,
 ) {
-  Column(
-    modifier = modifier
-      .clip(shape)
-      .background(borderColor)
-      .fillMaxHeight()
-  ) {
-    Box(
-      modifier = modifier
-        .clip(shape)
-        .size(width = 30.dp, height = 1000.dp)
-        .background(
-          StripeStyle(
-            stripeColor = Color.Blue,
-            stripeThickness = 6.dp,
-            stripeBackground = Color.Magenta,
-            stripeShadowColor = Color.Blue
-          )
-        )
+  var data by remember {
+    mutableStateOf(-1000f)
+  }
+
+  val progressAngle by animateFloatAsState(
+    targetValue = data,
+    animationSpec = tween(
+      durationMillis = animationDuration,
+      delayMillis = animationDelay
     )
+  )
+
+  LaunchedEffect(Unit) {
+    data = value
+  }
+
+  val angle = progressAngle * 360f / (maxValue - minValue).toFloat()
+
+  Box(modifier = modifier) {
+    Canvas(
+      modifier = Modifier
+        .size(100.dp)
+    ) {
+      val width = size.width
+      val height = size.height
+
+      drawRoundRect(
+        color = backgroundColor
+      )
+      drawRoundRect(
+        color = Color.Yellow,
+        size = Size(angle * width, height)
+      )
+    }
   }
 }

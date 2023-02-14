@@ -226,11 +226,11 @@ public fun SliderzCircularProgressBar(
        * gap between x and y
        */
 
+      val outerRadius = radius + thickness / 2f
+      for (i in 0..(maxValue - minValue)) {
+        val color =
+          if (i < centerValue - minValue) progressSweepColor else outerLineColor
       if (marker) {
-        val outerRadius = radius + thickness / 2f
-        for (i in 0..(maxValue - minValue)) {
-          val color =
-            if (i < centerValue - minValue) progressSweepColor else outerLineColor
           val angleInDegree = i * 360f / (maxValue - minValue).toFloat()
           val angleInRad = angleInDegree * PI / 180f + PI / 2f
           val yGap = cos(angleInDegree * PI / 180f) * gapBetweenOuterLineAndInnerCircle

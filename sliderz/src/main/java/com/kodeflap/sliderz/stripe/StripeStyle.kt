@@ -20,6 +20,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.TileMode
+import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 
@@ -28,7 +29,6 @@ public fun StripeStyle(
   stripeColor: Color,
   stripeThickness: Dp,
   stripeBackground: Color,
-  stripeShadowColor: Color
 ): Brush {
   val stripeWidth = with(LocalDensity.current) {
     stripeThickness.toPx()
