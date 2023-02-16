@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import com.kodeflap.sliderz.Configuration
+import com.kodeflap.Macaronz.Configuration
 
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
@@ -67,6 +67,5 @@ dependencies {
   implementation(libs.androidx.compose.foundation)
   implementation(libs.androidx.compose.runtime)
   implementation(libs.androidx.compose.constraintlayout)
-
-  implementation(project(":sliderz"))
+  implementation(project(":macaronz"))
 }

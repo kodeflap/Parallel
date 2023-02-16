@@ -1,5 +1,5 @@
 public final class com/kodeflap/sliderz/LinearProgressBarKt {
-	public static final fun LinearProgressBar-3f6hBDE (Landroidx/compose/ui/Modifier;FLjava/util/List;FJFLandroidx/compose/ui/graphics/Shape;Landroidx/compose/runtime/Composer;II)V
+	public static final fun LinearProgressBar-3f6hBDE (Landroidx/compose/ui/Modifier;FIIJIILandroidx/compose/runtime/Composer;II)V
 }
 
 public final class com/kodeflap/sliderz/SliderzCircularProgressBarKt {
@@ -11,6 +11,6 @@ public final class com/kodeflap/sliderz/WaveStyleKt {
 }
 
 public final class com/kodeflap/sliderz/stripe/StripeStyleKt {
-	public static final fun StripeStyle-HspI6m8 (JFJJLandroidx/compose/runtime/Composer;I)Landroidx/compose/ui/graphics/Brush;
+	public static final fun StripeStyle-PyWbhQs (Landroidx/compose/ui/unit/Density;JFJ)Landroidx/compose/ui/graphics/Brush;
 }
 

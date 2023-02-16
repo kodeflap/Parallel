@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.kodeflap.sliderz
+package com.kodeflap.Macaronz
 
 object Configuration {
     const val compileSdk = 33

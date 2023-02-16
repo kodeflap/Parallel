@@ -13,13 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.kodeflap.sliderz
+package com.kodeflap.Macaronz
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -28,12 +27,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
-import com.kodeflap.sliderz.stripe.StripeStyle
+import com.kodeflap.Macaronz.stripe.StripeStyle
 
 @Composable
 public fun LinearProgressBar(
@@ -43,7 +40,7 @@ public fun LinearProgressBar(
   animationDelay: Int = 0,
   backgroundColor: Color = Color.Cyan,
   minValue: Int = 0,
-  maxValue: Int = 100,
+  maxValue: Int = 100
 ) {
   var data by remember {
     mutableStateOf(-1000f)
@@ -75,7 +72,7 @@ public fun LinearProgressBar(
         color = backgroundColor
       )
       drawRoundRect(
-        color = Color.Yellow,
+        brush = StripeStyle(stripeColor = Color.Blue, stripeThickness = 60.dp, stripeBackground = Color.Yellow),
         size = Size(angle * width, height)
       )
     }

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import com.kodeflap.sliderz.Configuration
+import com.kodeflap.Macaronz.Configuration
 
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
