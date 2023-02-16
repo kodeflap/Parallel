@@ -1,6 +1,3 @@
-# Parallel
-
-A customizable progress bars
 
 <p align = "center">
       <img src = "https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github" height = 25/>
